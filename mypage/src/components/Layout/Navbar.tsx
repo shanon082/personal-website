@@ -22,7 +22,7 @@ const Navbar = () => {
           <a href="#home" className="flex items-center gap-2">
             <Code2 className="size-8 text-primary-700" />
             <span className="text-xl font-bold text-primary-900">
-              Shanon Lubega
+              Shanon Simon Lubega
             </span>
           </a>
 

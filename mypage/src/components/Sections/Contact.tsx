@@ -53,7 +53,6 @@ const onSubmit = async (data: FormData) => {
           name: data.name,
           email: data.email,
           message: data.message,
-          // Optional: add subject or from_name
           subject: `New message from ${data.name} via portfolio`,
         }),
       });
@@ -63,7 +62,7 @@ const onSubmit = async (data: FormData) => {
       if (result.success) {
         setIsSubmitted(true);
         reset();
-        setTimeout(() => setIsSubmitted(false), 5000); // Auto-hide success after 5s
+        setTimeout(() => setIsSubmitted(false), 5000); 
       } else {
         throw new Error(result.message || 'Submission failed');
       }

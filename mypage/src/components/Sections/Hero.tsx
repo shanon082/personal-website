@@ -86,12 +86,13 @@ const Hero = () => {
               {/* Placeholder for developer illustration */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="size-48 mx-auto bg-gradient-to-br from-primary-700 to-primary-900 rounded-full flex items-center justify-center mb-6 shadow-2xl">
+                  {/* <div className="size-48 mx-auto bg-gradient-to-br from-primary-700 to-primary-900 rounded-full flex items-center justify-center mb-6 shadow-2xl">
                     <Code2 size={80} className="text-white" />
                   </div>
                   <p className="text-primary-900 font-medium text-lg">
                     Interactive Developer Profile
-                  </p>
+                  </p> */}
+                  <img src="../../app/icon.png" alt="profile picture" />
                 </div>
               </div>
               

@@ -6,11 +6,11 @@ import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      type: 'intern',
+      type: 'work',
       title: 'Full Stack Developer',
       company: 'Code Craft',
       period: '2024 - 2025',
-      location: 'india',
+      location: 'india (remotely)',
       description: 'Participated in development of multiple web applications using React, Node.js, and microservices architecture.',
     },
     // {

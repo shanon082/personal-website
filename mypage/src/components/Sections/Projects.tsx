@@ -8,25 +8,52 @@ const Projects = () => {
     {
       title: 'E-Commerce Platform',
       description: 'Full-featured online store with cart, payment integration, and admin dashboard.',
-      tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
+      tags: ['PHP', 'JavaScript', 'TailwindCSS', 'SQL'],
       github: 'https://github.com',
       live: 'https://demo.com',
       icon: Code2,
       color: 'bg-blue-100 text-blue-800',
     },
     {
-      title: 'Task Management API',
-      description: 'RESTful API with real-time updates, authentication, and role-based access.',
-      tags: ['Node.js', 'Express', 'Socket.io', 'MongoDB'],
+      title: 'Sickle-cell Image Multiplier',
+      description: 'A system that help researchers in medical to increase the images in thier dataset',
+      tags: ['React.js', 'Django', 'TailwindCSS', 'SQLite'],
       github: 'https://github.com',
       live: 'https://api.demo.com',
       icon: Server,
       color: 'bg-green-100 text-green-800',
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'Real-time data visualization dashboard with interactive charts and reports.',
-      tags: ['React', 'D3.js', 'Python', 'FastAPI'],
+      title: 'Secure Authetication System',
+      description: 'Secure Authentication system',
+      tags: ['Node.js', 'Express', 'MongoDB', 'React.js'],
+      github: 'https://github.com',
+      live: 'https://analytics.demo.com',
+      icon: Database,
+      color: 'bg-purple-100 text-purple-800',
+    },
+    {
+      title: 'Timetable Generator System',
+      description: 'Automated system with AI feature that enables instutitions to generate individuals',
+      tags: ['Laravel', 'React.js', 'TailwindCSS', 'SQL'],
+      github: 'https://github.com',
+      live: 'https://demo.com',
+      icon: Code2,
+      color: 'bg-blue-100 text-blue-800',
+    },
+    {
+      title: 'Employee Management System',
+      description: 'A system that enables employers to manage thier employees',
+      tags: ['HTML', 'PHP', 'CSS', 'Javascript', 'SQL'],
+      github: 'https://github.com',
+      live: 'https://api.demo.com',
+      icon: Server,
+      color: 'bg-green-100 text-green-800',
+    },
+    {
+      title: 'Smart Irrigation System',
+      description: 'Farmers ability to control the sprinkler basing on the soil moisture content',
+      tags: ['HTML', 'Javascript', 'Firebase', 'CSS', 'C++ (Arduino)'],
       github: 'https://github.com',
       live: 'https://analytics.demo.com',
       icon: Database,
@@ -114,9 +141,9 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="btn-primary">
+          <a href='https://github.com/shanon082' className="btn-primary">
             View All Projects
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
