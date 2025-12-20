@@ -41,7 +41,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-20 bg-white">
       <div className="container-responsive section-padding">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Skills & Expertise</h2>
+          <h2 className="text-4xl font-bold mb-4 text-primary-900">Skills & Expertise</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Technologies and tools I use to bring ideas to life
           </p>
@@ -63,14 +63,14 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl shadow-lg p-6 card-hover"
+              className="bg-white rounded-2xl shadow-lg p-6 card-hover border border-gray-100"
             >
               {/* Category Header */}
               <div className="flex items-center mb-6">
-                <div className="p-3 bg-primary-100 rounded-xl mr-4">
-                  <category.icon className="h-6 w-6 text-primary-800" />
+                <div className="p-3 bg-primary-50 rounded-xl mr-4">
+                  <category.icon className="h-6 w-6 text-primary-700" />
                 </div>
-                <h3 className="text-xl font-bold">{category.title}</h3>
+                <h3 className="text-xl font-bold text-primary-900">{category.title}</h3>
               </div>
 
               {/* Skills List */}
@@ -78,8 +78,8 @@ const Skills = () => {
                 {category.skills.map((skill) => (
                   <div key={skill.name}>
                     <div className="flex justify-between mb-1">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="text-primary-800 font-semibold">
+                      <span className="font-medium text-gray-700">{skill.name}</span>
+                      <span className="text-primary-700 font-semibold">
                         {skill.level}%
                       </span>
                     </div>
@@ -89,7 +89,7 @@ const Skills = () => {
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="h-full bg-primary-800 rounded-full"
+                        className="h-full bg-gradient-to-r from-primary-600 to-primary-700 rounded-full"
                       />
                     </div>
                   </div>
@@ -106,7 +106,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold text-center mb-8">
+          <h3 className="text-2xl font-bold text-center mb-8 text-primary-900">
             Tech Stack
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -121,9 +121,9 @@ const Skills = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow"
+                className="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border border-gray-100"
               >
-                <span className="font-medium text-gray-800">{tech}</span>
+                <span className="font-medium text-primary-800">{tech}</span>
               </motion.div>
             ))}
           </div>

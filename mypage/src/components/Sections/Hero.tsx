@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-16">
+    <section id="home" className="min-h-screen flex items-center pt-16 bg-gradient-to-b from-white to-primary-50">
       <div className="container-responsive section-padding">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
@@ -27,28 +27,29 @@ const Hero = () => {
           >
             <motion.p
               variants={fadeInUp}
-              className="text-primary-800 font-semibold mb-4"
+              className="text-primary-700 font-semibold mb-4 flex items-center gap-2"
             >
-              👋 Hello, I'm
+              <span className="w-8 h-0.5 bg-primary-700"></span>
+              Hello, I'm
             </motion.p>
             
             <motion.h1
               variants={fadeInUp}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
             >
-              Alex <span className="text-primary-800">Johnson</span>
+              Shanon Simon <span className="text-primary-700">Lubega</span>
             </motion.h1>
             
             <motion.h2
               variants={fadeInUp}
-              className="text-2xl md:text-3xl text-gray-600 mb-6"
+              className="text-2xl md:text-3xl text-gray-700 mb-6"
             >
-              Full Stack Developer & Software Engineer
+              Full Stack Developer & Software Developer
             </motion.h2>
             
             <motion.p
               variants={fadeInUp}
-              className="text-gray-600 mb-8 text-lg"
+              className="text-gray-600 mb-8 text-lg leading-relaxed"
             >
               I build exceptional digital experiences focused on performance,
               accessibility, and clean code. Specializing in modern web
@@ -59,14 +60,18 @@ const Hero = () => {
               variants={fadeInUp}
               className="flex flex-wrap gap-4"
             >
-              <button className="btn-primary flex items-center">
+              <a href="#projects" className="btn-primary flex items-center">
                 View Projects
-                <ChevronRight className="ml-2" size={20} />
-              </button>
-              <button className="btn-secondary flex items-center">
-                <Download className="mr-2" size={20} />
+                <ChevronRight className="ml-2 size-5" />
+              </a>
+              <a
+                href="/SHANON_SIMON_LUBEGA_CV.pdf"
+                download="SHANON_SIMON_LUBEGA_CV.pdf"
+                className="btn-secondary flex items-center"
+              >
+                <Download className="mr-2 size-5" />
                 Download CV
-              </button>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -77,25 +82,25 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary-100 to-primary-300 rounded-3xl overflow-hidden">
+            <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary-100 to-primary-300 rounded-3xl overflow-hidden shadow-2xl">
               {/* Placeholder for developer illustration */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-48 h-48 mx-auto bg-primary-800 rounded-full flex items-center justify-center mb-6">
+                  <div className="size-48 mx-auto bg-gradient-to-br from-primary-700 to-primary-900 rounded-full flex items-center justify-center mb-6 shadow-2xl">
                     <Code2 size={80} className="text-white" />
                   </div>
-                  <p className="text-primary-900 font-medium">
+                  <p className="text-primary-900 font-medium text-lg">
                     Interactive Developer Profile
                   </p>
                 </div>
               </div>
               
               {/* Floating elements */}
-              <div className="absolute top-8 left-8 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                <span className="text-primary-800 font-bold">TS</span>
+              <div className="absolute top-8 left-8 size-16 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-primary-200">
+                <span className="text-primary-800 font-bold text-lg">TS</span>
               </div>
-              <div className="absolute bottom-12 right-12 w-20 h-20 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                <span className="text-primary-800 font-bold">React</span>
+              <div className="absolute bottom-12 right-12 size-20 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-primary-200">
+                <span className="text-primary-800 font-bold text-lg">React</span>
               </div>
             </div>
           </motion.div>

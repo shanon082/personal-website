@@ -43,7 +43,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-bold mb-4 text-primary-900">Featured Projects</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills in
             full-stack development and problem-solving.
@@ -58,7 +58,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="card-hover bg-white rounded-2xl shadow-xl overflow-hidden"
+              className="card-hover bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
             >
               {/* Project Header */}
               <div className="p-6">
@@ -66,17 +66,17 @@ const Projects = () => {
                   <div className={`p-3 rounded-xl ${project.color}`}>
                     <project.icon size={24} />
                   </div>
-                  <div className="flex space-x-2">
+                  <div className="flex gap-2">
                     <a
                       href={project.github}
-                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-600 hover:text-primary-700"
                       aria-label="GitHub"
                     >
                       <Github size={20} />
                     </a>
                     <a
                       href={project.live}
-                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-600 hover:text-primary-700"
                       aria-label="Live Demo"
                     >
                       <ExternalLink size={20} />
@@ -85,7 +85,7 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-primary-900">{project.title}</h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
 
                 {/* Tags */}
@@ -102,7 +102,7 @@ const Projects = () => {
               </div>
 
               {/* Hover Effect Indicator */}
-              <div className="h-1 w-0 group-hover:w-full bg-primary-800 transition-all duration-300" />
+              <div className="h-1 w-0 bg-primary-700 transition-all duration-300 group-hover:w-full" />
             </motion.div>
           ))}
         </div>

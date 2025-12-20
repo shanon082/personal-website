@@ -48,7 +48,7 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Experience & Education</h2>
+          <h2 className="text-4xl font-bold mb-4 text-primary-900">Experience & Education</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             My professional journey and academic background
           </p>
@@ -72,10 +72,10 @@ const Experience = () => {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="hidden lg:block absolute top-6 -left-2 w-4 h-4 bg-primary-800 rounded-full border-4 border-white" />
+                <div className="hidden lg:block absolute top-6 -left-2 w-4 h-4 bg-primary-700 rounded-full border-4 border-white shadow-lg" />
 
                 {/* Content Card */}
-                <div className="bg-white rounded-2xl shadow-lg p-6 card-hover">
+                <div className="bg-white rounded-2xl shadow-lg p-6 card-hover border border-gray-100">
                   <div className="flex items-start mb-4">
                     <div className={`p-3 rounded-xl mr-4 ${
                       exp.type === 'work' 
@@ -89,8 +89,8 @@ const Experience = () => {
                       )}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                      <p className="text-primary-800 font-semibold mb-2">{exp.company}</p>
+                      <h3 className="text-xl font-bold mb-1 text-primary-900">{exp.title}</h3>
+                      <p className="text-primary-700 font-semibold mb-2">{exp.company}</p>
                       
                       {/* Details */}
                       <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">

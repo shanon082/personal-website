@@ -41,25 +41,25 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'hello@example.com',
-      link: 'mailto:hello@example.com',
+      value: 'shanonsimon082@gmail.com',
+      link: 'mailto:shanonsimon082@gmail.com',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      value: '+(256) 771-950092',
+      link: 'tel:+256771950092',
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Busega-Kampala, Uganda',
       link: '#',
     },
   ];
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 bg-white">
       <div className="container-responsive section-padding">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-4xl font-bold mb-4 text-primary-900">Get In Touch</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Have a project in mind or want to discuss opportunities?
             Feel free to reach out!
@@ -81,28 +81,28 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            <h3 className="text-2xl font-bold mb-6 text-primary-900">Contact Information</h3>
             
             <div className="space-y-6 mb-8">
               {contactInfo.map((info) => (
                 <a
                   key={info.title}
                   href={info.link}
-                  className="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group"
+                  className="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-primary-50 transition-all duration-300 group border border-gray-100"
                 >
                   <div className="p-3 bg-primary-100 rounded-lg mr-4 group-hover:bg-primary-200 transition-colors">
-                    <info.icon className="h-6 w-6 text-primary-800" />
+                    <info.icon className="h-6 w-6 text-primary-700" />
                   </div>
                   <div>
                     <p className="font-medium text-gray-700">{info.title}</p>
-                    <p className="text-primary-800 font-semibold">{info.value}</p>
+                    <p className="text-primary-700 font-semibold">{info.value}</p>
                   </div>
                 </a>
               ))}
             </div>
 
-            <div className="bg-primary-50 rounded-2xl p-6">
-              <h4 className="font-bold text-lg mb-3">Available for:</h4>
+            <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100">
+              <h4 className="font-bold text-lg mb-3 text-primary-900">Available for:</h4>
               <ul className="space-y-2">
                 {[
                   'Full-time positions',
@@ -110,8 +110,8 @@ const Contact = () => {
                   'Technical consulting',
                   'Open source collaboration',
                 ].map((item) => (
-                  <li key={item} className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-primary-800 mr-2" />
+                  <li key={item} className="flex items-center text-gray-700">
+                    <CheckCircle className="h-5 w-5 text-primary-700 mr-2" />
                     <span>{item}</span>
                   </li>
                 ))}

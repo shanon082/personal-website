@@ -1,19 +1,33 @@
 @import "tailwindcss";
 
 :root {
+  /* Navy Blue Theme */
   --background: #ffffff;
-  --foreground: #171717;
-  --primary-50: #eef2ff;
-  --primary-100: #e0e7ff;
-  --primary-200: #c7d2fe;
-  --primary-300: #a5b4fc;
-  --primary-400: #818cf8;
-  --primary-500: #6366f1;
-  --primary-600: #4f46e5;
-  --primary-700: #4338ca;
-  --primary-800: #3730a3;
-  --primary-900: #1e1b4b;
+  --foreground: #0f172a;
+  --primary-50: #f0f4ff;
+  --primary-100: #dbe4ff;
+  --primary-200: #bbc9f7;
+  --primary-300: #8ea4ef;
+  --primary-400: #647de8;
+  --primary-500: #3b5bdb;
+  --primary-600: #1e3a8a;
+  --primary-700: #1e40af;
+  --primary-800: #1e3a8a;
+  --primary-900: #1e2a5a;
   --primary-950: #0f172a;
+  
+  /* Neutral colors for better contrast */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --gray-950: #030712;
 }
 
 @theme inline {
@@ -30,6 +44,17 @@
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
   --color-primary-950: var(--primary-950);
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
@@ -48,11 +73,21 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark Mode - Navy Blue Base */
+.dark {
+  --background: #0f172a;           /* Deep Navy background */
+  --foreground: #f8fafc;           /* Very light text for maximum contrast */
+  --primary-50: #1e2a5a;
+  --primary-100: #1e3a8a;
+  --primary-200: #1e40af;
+  --primary-300: #3b5bdb;
+  --primary-400: #647de8;
+  --primary-500: #8ea4ef;
+  --primary-600: #bbc9f7;
+  --primary-700: #dbe4ff;
+  --primary-800: #f0f4ff;
+  --primary-900: #f8fafc;
+  --primary-950: #ffffff;
 }
 
 body {
@@ -60,6 +95,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom utility classes */
@@ -88,9 +124,10 @@ body {
   color: #4b5563;
   transition-property: color;
   transition-duration: 200ms;
+  font-weight: 500;
   
   &:hover {
-    color: var(--primary-800);
+    color: var(--primary-700);
   }
 }
 
@@ -102,16 +139,18 @@ body {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   border-radius: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
   transition-property: all;
   transition-duration: 300ms;
   transform: translateY(0);
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.3);
+  border: 2px solid transparent;
   
   &:hover {
     background-color: var(--primary-900);
     transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.4);
+    border-color: var(--primary-700);
   }
 }
 
@@ -119,38 +158,134 @@ body {
   border-width: 2px;
   border-color: var(--primary-800);
   color: var(--primary-800);
+  background: transparent;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   border-radius: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
   transition-property: all;
   transition-duration: 300ms;
   
   &:hover {
     background-color: var(--primary-800);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.3);
   }
 }
 
 @utility card-hover {
   transition-property: all;
   transition-duration: 300ms;
+  border: 1px solid transparent;
   
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--primary-200);
   }
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .nav-link {
-    color: #d1d5db;
-    
-    &:hover {
-      color: var(--primary-300);
-    }
-  }
+/* Enhanced Dark Mode Adjustments */
+.dark .bg-white {
+  background-color: #1e293b !important;
+  color: #f1f5f9;
+}
+
+.dark .bg-gray-50 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #334155 !important;
+}
+
+.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+}
+
+/* Improve form visibility */
+.dark input,
+.dark textarea {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+.dark input:focus,
+.dark textarea:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.3);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Better visibility for text */
+.dark .text-primary-800 {
+  color: #bbc9f7 !important;
+}
+
+.dark .text-primary-900 {
+  color: #dbe4ff !important;
+}
+
+.dark .bg-primary-800 {
+  background-color: #1e40af !important;
+}
+
+.dark .bg-primary-100 {
+  background-color: rgba(30, 58, 138, 0.2) !important;
+}
+
+.dark .bg-primary-50 {
+  background-color: rgba(30, 58, 138, 0.1) !important;
+}
+
+/* Ensure good contrast for links */
+.dark a {
+  color: #93c5fd;
+}
+
+.dark a:hover {
+  color: #60a5fa;
+}
+
+/* Section backgrounds for better hierarchy */
+.dark .bg-gray-50 {
+  background-color: #0f172a !important;
+}
+
+.dark section:not(.bg-gray-50) {
+  background-color: #1e293b !important;
+}
+
+/* Improve card visibility in dark mode */
+.dark .bg-gray-200 {
+  background-color: #334155 !important;
+}
+
+.dark .bg-gray-300 {
+  background-color: #475569 !important;
+}
+
+/* Timeline line visibility */
+.dark .bg-primary-200 {
+  background-color: #374151 !important;
 }
