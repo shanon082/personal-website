@@ -6,37 +6,37 @@ import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      type: 'work',
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Solutions Inc.',
-      period: '2022 - Present',
-      location: 'San Francisco, CA',
-      description: 'Led development of multiple web applications using React, Node.js, and microservices architecture.',
+      type: 'intern',
+      title: 'Full Stack Developer',
+      company: 'Code Craft',
+      period: '2024 - 2025',
+      location: 'india',
+      description: 'Participated in development of multiple web applications using React, Node.js, and microservices architecture.',
     },
-    {
-      type: 'work',
-      title: 'Frontend Developer',
-      company: 'Digital Agency',
-      period: '2020 - 2022',
-      location: 'Remote',
-      description: 'Built responsive websites and web applications for various clients across different industries.',
-    },
+    // {
+    //   type: 'work',
+    //   title: 'Frontend Developer',
+    //   company: 'Digital Agency',
+    //   period: '2020 - 2022',
+    //   location: 'Remote',
+    //   description: 'Built responsive websites and web applications for various clients across different industries.',
+    // },
     {
       type: 'education',
-      title: 'Master of Computer Science',
-      company: 'Stanford University',
-      period: '2018 - 2020',
-      location: 'Stanford, CA',
+      title: 'Electronics and Computer Engineering Bsc',
+      company: 'Soroti University',
+      period: '2022 - 2025',
+      location: 'Arapai, Soroti-Uganda',
       description: 'Specialized in Software Engineering and Distributed Systems.',
     },
-    {
-      type: 'education',
-      title: 'Bachelor of Software Engineering',
-      company: 'MIT',
-      period: '2014 - 2018',
-      location: 'Cambridge, MA',
-      description: 'Graduated with honors. Focus on Web Technologies and Databases.',
-    },
+    // {
+    //   type: 'education',
+    //   title: 'Bachelor of Software Engineering',
+    //   company: 'MIT',
+    //   period: '2014 - 2018',
+    //   location: 'Cambridge, MA',
+    //   description: 'Graduated with honors. Focus on Web Technologies and Databases.',
+    // },
   ];
 
   return (
