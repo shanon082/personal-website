@@ -14,6 +14,7 @@ type FormData = {
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   
   const {
     register,
@@ -22,19 +23,57 @@ const Contact = () => {
     reset,
   } = useForm<FormData>();
 
-  const onSubmit = async (data: FormData) => {
+//   const onSubmit = async (data: FormData) => {
+//     setIsSubmitting(true);
+    
+//     // Simulate API call
+//     await new Promise(resolve => setTimeout(resolve, 1500));
+    
+//     console.log('Form submitted:', data);
+//     setIsSubmitting(false);
+//     setIsSubmitted(true);
+//     reset();
+    
+//     // Reset success message after 3 seconds
+//     setTimeout(() => setIsSubmitted(false), 3000);
+//   };
+
+const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Form submitted:', data);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    reset();
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setSubmitError(false);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '3d40e330-081b-40ef-95ae-591405bd1f49', 
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          // Optional: add subject or from_name
+          subject: `New message from ${data.name} via portfolio`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        reset();
+        setTimeout(() => setIsSubmitted(false), 5000); // Auto-hide success after 5s
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitError(true);
+      setTimeout(() => setSubmitError(false), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -187,24 +226,32 @@ const Contact = () => {
               </div>
 
               <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full flex items-center justify-center"
-              >
-                {isSubmitting ? (
-                  'Sending...'
-                ) : isSubmitted ? (
-                  <>
-                    <CheckCircle className="mr-2" size={20} />
-                    Message Sent!
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2" size={20} />
-                    Send Message
-                  </>
-                )}
-              </button>
+            type="submit"
+            disabled={isSubmitting}
+            className="btn-primary w-full flex items-center justify-center"
+          >
+            {isSubmitting ? (
+              'Sending...'
+            ) : isSubmitted ? (
+              <>
+                <CheckCircle className="mr-2" size={20} />
+                Message Sent!
+              </>
+            ) : submitError ? (
+              'Error – Try Again'
+            ) : (
+              <>
+                <Send className="mr-2" size={20} />
+                Send Message
+              </>
+            )}
+          </button>
+          {/* Optional: Show error details */}
+          {submitError && (
+            <p className="text-red-600 text-center">
+              Something went wrong. Please try again or email me directly.
+            </p>
+          )}
             </form>
           </motion.div>
         </div>
