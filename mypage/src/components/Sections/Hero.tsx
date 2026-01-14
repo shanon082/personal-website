@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { ChevronRight, Code2, Download } from 'lucide-react';
+import image from "@/app/icon.png";
+import Image from "next/image";
 
 const Hero = () => {
   const fadeInUp = {
@@ -86,23 +88,18 @@ const Hero = () => {
               {/* Placeholder for developer illustration */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  {/* <div className="size-48 mx-auto bg-gradient-to-br from-primary-700 to-primary-900 rounded-full flex items-center justify-center mb-6 shadow-2xl">
-                    <Code2 size={80} className="text-white" />
-                  </div>
-                  <p className="text-primary-900 font-medium text-lg">
-                    Interactive Developer Profile
-                  </p> */}
-                  <img src="../../app/icon.png" alt="profile picture" />
+                  <Image src={image} alt='profile picture' fill
+                className="object-cover rounded-4xl shadow-4xl"/>
                 </div>
               </div>
               
               {/* Floating elements */}
-              <div className="absolute top-8 left-8 size-16 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-primary-200">
+              {/* <div className="absolute top-8 left-8 size-16 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-primary-200">
                 <span className="text-primary-800 font-bold text-lg">TS</span>
               </div>
               <div className="absolute bottom-12 right-12 size-20 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-primary-200">
                 <span className="text-primary-800 font-bold text-lg">React</span>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
