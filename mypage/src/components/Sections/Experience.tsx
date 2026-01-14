@@ -7,27 +7,27 @@ const Experience = () => {
   const experiences = [
     {
       type: 'work',
+      title: 'Network Operator',
+      company: 'Soliton Telmec',
+      period: '2026 - current',
+      location: 'Bugolobi, Farady-Road',
+      description: 'Maintainance of MTN wakanet through contact between the Field Team and ZTE for internet restoration.',
+    },
+    {
+      type: 'work',
       title: 'Full Stack Developer',
       company: 'Code Craft',
       period: '2024 - 2025',
       location: 'india (remotely)',
       description: 'Participated in development of multiple web applications using React, Node.js, and microservices architecture.',
     },
-    // {
-    //   type: 'work',
-    //   title: 'Frontend Developer',
-    //   company: 'Digital Agency',
-    //   period: '2020 - 2022',
-    //   location: 'Remote',
-    //   description: 'Built responsive websites and web applications for various clients across different industries.',
-    // },
     {
       type: 'education',
       title: 'Electronics and Computer Engineering Bsc',
       company: 'Soroti University',
       period: '2022 - 2025',
       location: 'Arapai, Soroti-Uganda',
-      description: 'Specialized in Software Engineering and Distributed Systems.',
+      description: 'Specialized in Software Development and Distributed Systems.',
     },
     // {
     //   type: 'education',
