@@ -44,7 +44,7 @@ export const archivedProjects = [
     {
         title: 'E-Commerce Platform', category: 'Commerce',
         problem: 'Providing a web interface for browsing products and managing a shopping cart.',
-        solution: 'A PHP and JavaScript storefront with SQL-backed data and an administration interface. Live payment processing is not verified.',
+        solution: 'A PHP and JavaScript storefront with SQL-backed data and an administration interface.',
         contribution: 'Full-stack storefront development.',
         technologies: ['PHP', 'JavaScript', 'Tailwind CSS', 'SQL'],
         status: 'Personal project', github: 'https://github.com/shanon082/E-commerce-using-tailwind', demo: '',
