@@ -1,262 +1,81 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { Send, Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
+import { useState, type FormEvent } from 'react';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { profile } from '@/data/portfolio';
 
-type FormData = {
-  name: string;
-  email: string;
-  message: string;
-};
+export default function Contact() {
+  const [draft, setDraft] = useState('');
+  const [error, setError] = useState('');
 
-const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
-  
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<FormData>();
-
-//   const onSubmit = async (data: FormData) => {
-//     setIsSubmitting(true);
-    
-//     // Simulate API call
-//     await new Promise(resolve => setTimeout(resolve, 1500));
-    
-//     console.log('Form submitted:', data);
-//     setIsSubmitting(false);
-//     setIsSubmitted(true);
-//     reset();
-    
-//     // Reset success message after 3 seconds
-//     setTimeout(() => setIsSubmitted(false), 3000);
-//   };
-
-const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    setSubmitError(false);
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: '3d40e330-081b-40ef-95ae-591405bd1f49', 
-          name: data.name,
-          email: data.email,
-          message: data.message,
-          subject: `New message from ${data.name} via portfolio`,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setIsSubmitted(true);
-        reset();
-        setTimeout(() => setIsSubmitted(false), 5000); 
-      } else {
-        throw new Error(result.message || 'Submission failed');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitError(true);
-      setTimeout(() => setSubmitError(false), 5000);
-    } finally {
-      setIsSubmitting(false);
+  function prepareEmail(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const message = String(data.get('message') || '').trim();
+    if (!name || !email || !message) {
+      setDraft('');
+      setError('Please enter your name, email, and a message containing more than whitespace.');
+      return;
     }
-  };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'shanonsimon082@gmail.com',
-      link: 'mailto:shanonsimon082@gmail.com',
-    },
-    {
-      icon: Phone,
-      title: 'Phone',
-      value: '+(256) 771-950092',
-      link: 'tel:+256771950092',
-    },
-    {
-      icon: MapPin,
-      title: 'Location',
-      value: 'Busega-Kampala, Uganda',
-      link: '#',
-    },
-  ];
+    setError('');
+    setDraft(`mailto:${profile.email}?subject=${encodeURIComponent('Portfolio enquiry from ' + name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + '\nReply to: ' + email)}`);
+  }
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container-responsive section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold mb-4 text-primary-900">Get In Touch</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss opportunities?
-            Feel free to reach out!
+    <section id="contact" className="section section-padding">
+      <div className="container-responsive contact-grid">
+        <div>
+          <p className="eyebrow">04 / Let’s connect</p>
+          <h2>Have a problem worth solving?</h2>
+          <p className="contact-intro">
+            Let’s talk about an engineering role, a web or mobile application,
+            or software for your organisation.
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-primary-900">Contact Information</h3>
-            
-            <div className="space-y-6 mb-8">
-              {contactInfo.map((info) => (
-                <a
-                  key={info.title}
-                  href={info.link}
-                  className="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-primary-50 transition-all duration-300 group border border-gray-100"
-                >
-                  <div className="p-3 bg-primary-100 rounded-lg mr-4 group-hover:bg-primary-200 transition-colors">
-                    <info.icon className="h-6 w-6 text-primary-700" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-700">{info.title}</p>
-                    <p className="text-primary-700 font-semibold">{info.value}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100">
-              <h4 className="font-bold text-lg mb-3 text-primary-900">Available for:</h4>
-              <ul className="space-y-2">
-                {[
-                  'Full-time positions',
-                  'Freelance projects',
-                  'Technical consulting',
-                  'Open source collaboration',
-                ].map((item) => (
-                  <li key={item} className="flex items-center text-gray-700">
-                    <CheckCircle className="h-5 w-5 text-primary-700 mr-2" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Name *
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  {...register('name', { required: 'Name is required' })}
-                  className={`w-full px-4 py-3 rounded-lg border ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
-                  } focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent`}
-                  placeholder="Your name"
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address',
-                    },
-                  })}
-                  className={`w-full px-4 py-3 rounded-lg border ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
-                  } focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent`}
-                  placeholder="your.email@example.com"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  {...register('message', { required: 'Message is required' })}
-                  className={`w-full px-4 py-3 rounded-lg border ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
-                  } focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent`}
-                  placeholder="Tell me about your project..."
-                />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-                )}
-              </div>
-
-              <button
-            type="submit"
-            disabled={isSubmitting}
-            className="btn-primary w-full flex items-center justify-center"
-          >
-            {isSubmitting ? (
-              'Sending...'
-            ) : isSubmitted ? (
-              <>
-                <CheckCircle className="mr-2" size={20} />
-                Message Sent!
-              </>
-            ) : submitError ? (
-              'Error – Try Again'
-            ) : (
-              <>
-                <Send className="mr-2" size={20} />
-                Send Message
-              </>
-            )}
-          </button>
-          {/* Optional: Show error details */}
-          {submitError && (
-            <p className="text-red-600 text-center">
-              Something went wrong. Please try again or email me directly.
-            </p>
-          )}
-            </form>
-          </motion.div>
+          <a className="contact-email" href={`mailto:${profile.email}`}>
+            <Mail size={21} aria-hidden="true" />{profile.email}
+          </a>
+          <p className="muted">Kampala, Uganda</p>
+          <div className="contact-links">
+            <a href={profile.github}>GitHub <ArrowUpRight size={16} aria-hidden="true" /></a>
+            <a href={profile.company}>Shanvexa Technologies <ArrowUpRight size={16} aria-hidden="true" /></a>
+          </div>
         </div>
+        <form action={`mailto:${profile.email}`} method="post" encType="text/plain" onSubmit={prepareEmail} onChange={() => { setDraft(''); setError(''); }} className="contact-form">
+          <h3>Start a conversation</h3>
+          <p id="contact-privacy" className="muted">
+            Prepare an email draft here, then open your email app to review and send it.
+            This form does not transmit or store your details. Your email provider
+            handles the message when you send it.
+          </p>
+          <div className="form-row">
+            <div>
+              <label htmlFor="name">Name</label>
+              <input id="name" name="name" autoComplete="name" required maxLength={100} />
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input id="email" name="email" type="email" autoComplete="email" required maxLength={254} />
+            </div>
+          </div>
+          <label htmlFor="message">What would you like to discuss?</label>
+          <textarea id="message" name="message" rows={5} required maxLength={2500} />
+          <button type="submit" className="btn-primary" aria-describedby="contact-privacy">
+            Prepare email draft <ArrowUpRight size={18} aria-hidden="true" />
+          </button>
+          <div aria-live="polite">
+            {error && <p className="form-error">{error}</p>}
+            {draft && (
+              <p className="draft-feedback">
+                Your draft is ready. <a href={draft}>Open your email app</a> to review and send.
+                If no app opens, email <a href={`mailto:${profile.email}`}>{profile.email}</a> directly.
+                Nothing has been sent yet.
+              </p>
+            )}
+          </div>
+        </form>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

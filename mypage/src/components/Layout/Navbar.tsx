@@ -1,89 +1,33 @@
 'use client';
-
-import { useState } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Contact', href: '#contact' },
-  ];
-
-  return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm border-b border-gray-100">
-      <div className="container-responsive section-padding">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <Code2 className="size-8 text-primary-700" />
-            <span className="text-xl font-bold text-primary-900">
-              Shanon Simon Lubega
-            </span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="nav-link font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="/SHANON_SIMON_LUBEGA_CV.pdf"
-              download="SHANON_SIMON_LUBEGA_CV.pdf"
-              className="btn-primary text-sm"
-            >
-              Download CV
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-700"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100 bg-white">
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="nav-link py-2 px-4 hover:bg-primary-50 rounded-lg"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a
-                href="/SHANON_SIMON_LUBEGA_CV.pdf"
-                download="SHANON_SIMON_LUBEGA_CV.pdf"
-                className="btn-primary w-full"
-                onClick={() => setIsOpen(false)}
-              >
-                Download CV
-              </a>
-            </div>
-          </div>
-        )}
+import { useEffect, useRef, useState } from 'react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+const links = ['Projects', 'Skills', 'Experience', 'Contact'];
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    function close(event: KeyboardEvent) {
+      if (event.key === 'Escape' && open) {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    }
+    document.addEventListener('keydown', close);
+    return () => document.removeEventListener('keydown', close);
+  }, [open]);
+  return <header className="site-header">
+    <nav aria-label="Main navigation" className="container-responsive section-padding nav-inner">
+      <a href="#home" className="brand" aria-label="Shanon Simon Lubega, home">
+        <span className="brand-mark" aria-hidden="true">sl.</span>
+        <span>Shanon Lubega<span className="brand-caption">Software Engineer</span>
+        </span>
+      </a>
+      <div className="desktop-nav">{links.map(link => <a key={link} href={`#${link.toLowerCase()}`}>{link}</a>)}<a className="nav-cta" href="/SHANON_SIMON_LUBEGA_CV.pdf" download>Download CV <ArrowUpRight size={16} aria-hidden="true" />
+      </a>
+      </div>
+      <button ref={toggle} className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button>
+      <div id="mobile-navigation" className="mobile-nav" hidden={!open}>{links.map(link => <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setOpen(false)}>{link}</a>)}<a href="/SHANON_SIMON_LUBEGA_CV.pdf" download onClick={() => setOpen(false)}>Download CV</a>
       </div>
     </nav>
-  );
-};
-
-export default Navbar;
+  </header>;
+}

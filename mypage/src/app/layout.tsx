@@ -1,28 +1,25 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Layout/Navbar';
 import Footer from '@/components/Layout/Footer';
-
-const inter = Inter({ subsets: ['latin'] });
-
+import { profile } from '@/data/portfolio';
+const title = 'Shanon Simon Lubega | Full-Stack Software Engineer';
+const description = 'Ugandan full-stack software engineer building web and mobile applications with Laravel, React, TypeScript, and PostgreSQL. Founder of Shanvexa Technologies.';
 export const metadata: Metadata = {
-  title: 'Shanon Simon Lubega - Full Stack Developer Portfolio',
-  description: 'Portfolio of Shanon Simon Lubega, a Full Stack Developer specializing in modern web technologies.',
+  metadataBase: new URL(profile.site), title, description,
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', url: '/', title, description, siteName: profile.name, locale: 'en_UG' },
+  twitter: { card: 'summary_large_image', title, description },
 };
-
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout({ children }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className}`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
+  return <html lang="en">
+    <body>
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <Navbar />
+      <main id="main-content" tabIndex={-1}>{children}</main>
+      <Footer />
+    </body>
+  </html>;
 }
