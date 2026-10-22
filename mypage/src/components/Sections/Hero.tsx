@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import { ArrowDownRight, ArrowUpRight, Download } from 'lucide-react';
-import portrait from '@/app/icon.png';
+import EngineeringVisual from '@/components/Visuals/EngineeringVisual';
 import { profile } from '@/data/portfolio';
 export default function Hero() {
     return (<section id="home" className="hero section-padding">
@@ -18,10 +17,7 @@ export default function Hero() {
           </div>
           <p className="hero-note">Open to engineering roles, remote opportunities & freelance projects.</p>
         </div>
-        <div className="portrait-wrap">
-          <div className="portrait"><Image src={portrait} alt="Shanon Simon Lubega" fill priority sizes="(max-width: 760px) 90vw, 40vw" className="object-cover"/></div>
-          <div className="portrait-caption"><span className="status-dot" aria-hidden="true"/><span>Engineering with purpose.</span><span className="portrait-index" aria-hidden="true">01 / ABOUT</span></div>
-        </div>
+        <div className="hero-visual-slot"><EngineeringVisual /></div>
       </div>
     </section>);
 }

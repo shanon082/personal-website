@@ -2,7 +2,7 @@ const entries = [
   { category: 'Engineering & entrepreneurship', title: 'Founder', organisation: 'Shanvexa Technologies', period: '', description: 'Building a software development practice focused on web and mobile applications.', link: 'https://shanvexa-technologies.vercel.app/' },
   { category: 'Professional experience', title: 'Support Engineer / NOC Operations', organisation: 'Soliton Telmec', period: '2026 – October 2026', description: 'Supported network operations and ZTE GPON troubleshooting, escalated technical issues, and coordinated with field teams to restore connectivity.', link: '' },
   { category: 'Professional experience', title: 'Full-Stack Developer', organisation: 'Code Craft', period: '2024 – 2025 · Remote, India', description: 'Contributed to web application development using React and Node.js.', link: '' },
-  { category: 'Education', title: 'Bachelor of Engineering in Electronics and Computer Engineering', organisation: 'Soroti University', period: 'Soroti, Uganda', description: 'Engineering studies spanning electronics and computing, with an interest in software development. Attendance dates and qualification status are awaiting confirmation.', link: '' },
+  { category: 'Education', title: 'Bachelor of Engineering in Electronics and Computer Engineering', organisation: 'Soroti University', period: 'Soroti, Uganda', description: 'Studies in electronics and computer engineering, with an interest in software development.', link: '' },
 ];
 export default function Experience() {
   return <section id="experience" className="section section-tint section-padding">

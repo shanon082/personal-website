@@ -17,6 +17,10 @@ export default function RootLayout({ children }: {
   return <html lang="en">
     <body>
       <a href="#main-content" className="skip-link">Skip to content</a>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'Person', name: profile.name,
+        url: profile.site, jobTitle: 'Full-Stack Software Engineer', sameAs: [profile.github],
+      }).replace(/</g, '\\u003c') }} />
       <Navbar />
       <main id="main-content" tabIndex={-1}>{children}</main>
       <Footer />

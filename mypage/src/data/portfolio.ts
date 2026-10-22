@@ -8,44 +8,46 @@ export const profile = {
 };
 export const projects = [
     {
-        title: 'Automated Timetable Generator', category: 'Scheduling & optimisation',
+        artwork: 'schedule' as const, title: 'Automated Timetable Generator', category: 'Scheduling & optimisation',
         problem: 'Creating institutional timetables means balancing competing scheduling constraints.',
-        solution: 'A timetable-generation application using genetic algorithms and constraint satisfaction to explore possible schedules.',
+        solution: 'Generates candidate schedules using genetic algorithms and constraint satisfaction.',
         contribution: 'Full-stack development of the scheduling application.',
         technologies: ['Laravel', 'React', 'PostgreSQL', 'Genetic algorithms'],
         status: 'Academic project', github: '', demo: '',
     },
     {
-        title: 'Energy-Sharing Platform', category: 'Web & mobile',
+        artwork: 'energy' as const, title: 'Energy-Sharing Platform', category: 'Web & mobile',
         problem: 'Exploring how users could coordinate sharing energy through a digital platform.',
-        solution: 'A prototype connecting a Django backend with a Next.js interface and Android integration. Financial transactions and meter integrations are prototype concepts, not live services.',
+        solution: 'Connects a Django backend, Next.js interface, and Android integration. Payments and meter integrations are concepts, not operational services.',
         contribution: 'Full-stack prototype development and Android integration.',
         technologies: ['Django', 'Next.js', 'TypeScript', 'Android integration'],
         status: 'Prototype', github: '', demo: '',
     },
     {
-        title: 'Avenora Foundation Website', category: 'Organisation website',
+        artwork: 'foundation' as const, title: 'Avenora Foundation Website', category: 'Organisation website',
         problem: 'Demonstrating how a foundation could present its work online.',
-        solution: 'A fictional foundation website built as a client-presentation concept. It does not represent a paid client engagement or a real foundation.',
+        solution: 'A fictional foundation presentation built with Next.js. A design concept, not a paid client engagement or a real foundation.',
         contribution: 'Website design and development.',
         technologies: ['Next.js', 'TypeScript'], status: 'Fictional presentation concept',
         github: '', demo: 'https://avenora-foundation.vercel.app/',
     },
     {
-        title: 'Secure Authentication System', category: 'Application foundations',
+        artwork: 'authentication' as const, title: 'Secure Authentication System', category: 'Application foundations',
         problem: 'Applications need a dedicated foundation for user authentication.',
-        solution: 'An authentication application combining a React interface, an Express backend, and MongoDB storage.',
+        solution: 'Pairs a React interface with Express authentication logic and MongoDB storage.',
         contribution: 'Frontend and backend authentication development.',
         technologies: ['Node.js', 'Express', 'React', 'MongoDB'],
-        status: 'Personal project · deployment unverified', github: '', demo: '',
+        status: 'Personal project', github: '', demo: '',
     },
+];
+export const archivedProjects = [
     {
         title: 'E-Commerce Platform', category: 'Commerce',
         problem: 'Providing a web interface for browsing products and managing a shopping cart.',
         solution: 'A PHP and JavaScript storefront with SQL-backed data and an administration interface. Live payment processing is not verified.',
         contribution: 'Full-stack storefront development.',
         technologies: ['PHP', 'JavaScript', 'Tailwind CSS', 'SQL'],
-        status: 'Personal project · deployment unverified', github: 'https://github.com/shanon082/E-commerce-using-tailwind', demo: '',
+        status: 'Personal project', github: 'https://github.com/shanon082/E-commerce-using-tailwind', demo: '',
     },
     {
         title: 'Sickle-Cell Image Multiplier', category: 'Research tooling',
@@ -53,7 +55,7 @@ export const projects = [
         solution: 'A React and Django tool for expanding image datasets for sickle-cell research. It is not a diagnostic tool.',
         contribution: 'Web interface and backend development.',
         technologies: ['React', 'Django', 'Tailwind CSS', 'SQLite'],
-        status: 'Research tool · deployment unverified', github: '', demo: '',
+        status: 'Research tool', github: '', demo: '',
     },
 ];
 export const additionalProjects = [

@@ -1,9 +1,10 @@
+import { Code2, Database, GitBranch, Layers, Smartphone } from 'lucide-react';
 const categories = [
-  { title: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS'] },
-  { title: 'Backend', skills: ['Laravel', 'PHP', 'Django', 'Node.js', 'Express', 'REST APIs'] },
-  { title: 'Databases', skills: ['PostgreSQL', 'MongoDB', 'SQL', 'SQLite'] },
-  { title: 'Mobile', skills: ['Android integration'] },
-  { title: 'Tools & deployment', skills: ['Git', 'GitHub', 'Vercel'] },
+  { icon: Layers, title: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS'] },
+  { icon: Code2, title: 'Backend', skills: ['Laravel', 'PHP', 'Django', 'Node.js', 'Express', 'REST APIs'] },
+  { icon: Database, title: 'Databases', skills: ['PostgreSQL', 'MongoDB', 'SQL', 'SQLite'] },
+  { icon: Smartphone, title: 'Mobile', skills: ['Android integration'] },
+  { icon: GitBranch, title: 'Tools & deployment', skills: ['Git', 'GitHub', 'Vercel'] },
 ];
 export default function Skills() {
   return <section id="skills" className="section section-padding">
@@ -15,8 +16,8 @@ export default function Skills() {
         </div>
         <p>A practical stack for building interfaces, APIs, and the data layers that connect them.</p>
       </div>
-      <div className="skills-grid">{categories.map((category, index) => <article className="skill-card" key={category.title}>
-        <span className="skill-number" aria-hidden="true">0{index + 1}</span>
+      <div className="skills-grid">{categories.map((category) => <article className="skill-card" key={category.title}>
+        <category.icon className="skill-icon" size={23} strokeWidth={1.5} aria-hidden="true" />
         <h3>{category.title}</h3>
         <ul>{category.skills.map(skill => <li key={skill}>{skill}</li>)}</ul>
       </article>)}</div>
